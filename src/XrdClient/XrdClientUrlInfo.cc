@@ -263,7 +263,8 @@ XrdOucString XrdClientUrlInfo::GetUrl()
 void XrdClientUrlInfo::SetAddrFromHost() 
 {
    struct sockaddr_in ip[2];
-   char buf[255], **errmsg = 0;
+   char buf[255];
+   const char **errmsg = 0;
 
    int numaddr = XrdSysDNS::getHostAddr((char *)Host.c_str(),
                            (struct sockaddr *)ip, 1, errmsg);

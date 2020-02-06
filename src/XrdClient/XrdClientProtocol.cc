@@ -76,7 +76,7 @@ void clientMarshall(ClientRequest* str)
    case kXR_dirlist:
       // no swap on ASCII fields
       break;
-   case kXR_getfile:
+   case kXR_gpfile: // kXR_getfile:
       str->getfile.options = htonl(str->getfile.options);
       str->getfile.buffsz  = htonl(str->getfile.buffsz);
       break;
@@ -103,7 +103,7 @@ void clientMarshall(ClientRequest* str)
    case kXR_protocol:
       str->protocol.clientpv = htons( str->protocol.clientpv );
       break;
-   case kXR_putfile:
+   case kXR_chkpoint: // kXR_putfile:
       str->putfile.options = htonl(str->putfile.options);
       str->putfile.buffsz  = htonl(str->putfile.buffsz);
       break;
@@ -232,7 +232,7 @@ char *convertRequestIdToChar(kXR_unt16 requestid)
    case kXR_dirlist:
       return (char *)"kXR_dirlist";
       break;
-   case kXR_getfile:
+   case kXR_gpfile: // kXR_getfile:
       return (char *)"kXR_getfile";
       break;
    case kXR_locate:
@@ -256,7 +256,7 @@ char *convertRequestIdToChar(kXR_unt16 requestid)
    case kXR_protocol:
       return (char *)"kXR_protocol";
       break;
-   case kXR_putfile:
+   case kXR_chkpoint: // kXR_putfile:
       return (char *)"kXR_putfile";
       break;
    case kXR_query:
@@ -289,7 +289,7 @@ char *convertRequestIdToChar(kXR_unt16 requestid)
    case kXR_prepare:
       return (char *)"kXR_prepare";
       break;
-   case kXR_admin:
+   case kXR_fattr: // kXR_admin:
       return (char *)"kXR_admin";
       break;
    case kXR_statx:
@@ -385,7 +385,7 @@ void smartPrintClientHeader(ClientRequest* hdr)
           convertRequestIdToChar(hdr->header.requestid), hdr->header.requestid);
 
    switch(hdr->header.requestid) {
-   case kXR_admin:
+   case kXR_fattr: // kXR_admin:
       fprintf(stderr, "%40s0 repeated %d times\n", 
              "ClientHeader.admin.reserved = ",
              (kXR_int32)sizeof(hdr->admin.reserved));
@@ -459,9 +459,9 @@ void smartPrintClientHeader(ClientRequest* hdr)
              "ClientHeader.login.capver = ",
              hdr->login.capver[0]);
 
-      fprintf(stderr, "%40s%d\n", 
-             "ClientHeader.login.role = ",
-             hdr->login.role[0]);
+      // fprintf(stderr, "%40s%d\n", 
+      //        "ClientHeader.login.role = ",
+      // 	      hdr->login.role[0]);
       break;
 
    case kXR_mkdir:

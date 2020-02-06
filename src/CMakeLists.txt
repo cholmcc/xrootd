@@ -31,6 +31,7 @@ if( XRDCLHTTP_SUBMODULE )
 endif()
 
 if( NOT XRDCL_ONLY )
+  include( XrdClient )
   include( XrdServer )
   include( XrdDaemons )
   include( XrdFrm )

@@ -2157,7 +2157,8 @@ XrdOucString XrdClientConn::GetDomainToMatch(XrdOucString hostname) {
     //  valid inet address, then that address is returned, in order
     //  to be matched later for access granting
 
-    char *fullname, *err;
+    char *fullname;
+    const char *err;
 
     // The name may be already a FQDN: try extracting the domain
     XrdOucString res = ParseDomainFromHostname(hostname);

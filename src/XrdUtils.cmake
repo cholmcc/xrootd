@@ -26,6 +26,7 @@ add_library(
   #-----------------------------------------------------------------------------
                                 XrdSys/XrdSysAtomics.hh
   XrdSys/XrdSysDir.cc           XrdSys/XrdSysDir.hh
+  XrdSys/XrdSysDNS.cc           XrdSys/XrdSysDNS.hh
   XrdSys/XrdSysE2T.cc           XrdSys/XrdSysE2T.hh
   XrdSys/XrdSysError.cc         XrdSys/XrdSysError.hh
   XrdSys/XrdSysFAttr.cc         XrdSys/XrdSysFAttr.hh

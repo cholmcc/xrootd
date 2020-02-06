@@ -210,6 +210,14 @@ Conflicts: xrootd-client-libs (<<${binary:Version})
 Description: High performance, scalable fault tolerant data repositories.
  Client library 
 
+Package: libxrdclient2
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}
+Conflicts: xrootd-client-libs (<<${binary:Version})
+Description: High performance, scalable fault tolerant data repositories.
+ Posix client library 
+
 Package: libxrdcrypto1
 Architecture: any
 Section: libs
@@ -295,6 +303,7 @@ Architecture: any
 Section: python
 Depends: ${python3:Depends}, ${shlibs:Depends}
 Provides: ${python3:Provides}
+XB-Python-Version: ${python3:Versions}
 Description: High performance, scalable fault tolerant data repositories.
  Python interface
- 
+
